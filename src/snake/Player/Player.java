@@ -1,5 +1,6 @@
 package snake.Player;
 
+import snake.Apple.Apple;
 import snake.Engine.Engine;
 import snake.Engine.WindowEngine;
 
@@ -9,12 +10,20 @@ public class Player {
     public static int[] x = new int[Engine.allDots];
     public static int[] y = new int[Engine.allDots];
 
-    public static int quantitySnakeDots = 2;
+    public static int quantitySnakeDots;
 
-    static boolean right = true;
+    static boolean right;
     static boolean left;
     static boolean up;
     static boolean down;
+
+    public static void defaultPlayerSettings(){
+        Apple.numOfApples = 0;
+        quantitySnakeDots = 2;
+        x[0] = 0;
+        y[0] = 0;
+        right = true;
+    }
 
     public static void renderPlayer(Graphics graphics){
         for (int i = 0; i < quantitySnakeDots; i++) {
@@ -39,22 +48,6 @@ public class Player {
         } else {Engine.run = false;}
 
     }
-    public static void checkCollisions(){
-        for (int i = quantitySnakeDots; i > 0 ; i--) {
-            if (i > 3 && x[0] == x[i] && y[0] == y[i]) {
-                Engine.run = false;
-                break;
-            }
-        }
-        if(x[0] > WindowEngine.width - (Engine.dotSize*2)){
-            Engine.run = false;
-        } else if (y[0] > WindowEngine.height - (Engine.dotSize*2)) {
-            Engine.run = false;
-        } else if(x[0] < 0){
-            Engine.run = false;
-        } else if (y[0] < 0) {
-            Engine.run = false;
-        }
-    }
+
 }
 

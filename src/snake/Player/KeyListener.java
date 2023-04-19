@@ -30,15 +30,17 @@ public class KeyListener extends KeyAdapter {
             Player.right = true;
         }
 
-        else if (key == KeyEvent.VK_ESCAPE ){
-            Engine.run = false;
+        if (key == KeyEvent.VK_SPACE && !Engine.run){
+            Engine.restartGame();
         }
 
-        else if (key == KeyEvent.VK_R && !Debug.net) {
+        if (key == KeyEvent.VK_R && !Debug.net) {
             Debug.net = true;
         } else if (key == KeyEvent.VK_R && Debug.net) {
             Debug.net = false;
-        } else if (key == KeyEvent.VK_B && !Debug.border) {
+        }
+
+        if (key == KeyEvent.VK_B && !Debug.border) {
             Debug.border = true;
         } else if (key == KeyEvent.VK_B && Debug.border) {
             Debug.border = false;

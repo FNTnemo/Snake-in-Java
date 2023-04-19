@@ -16,6 +16,6 @@ public class WindowEngine extends JFrame  {
         setLocation(100, 100);
         add(new Engine());
         setVisible(true);
-        setResizable(true);
+        setResizable(false);
     }
 }

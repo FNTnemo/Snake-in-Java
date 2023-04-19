@@ -20,13 +20,12 @@ public class Apple {
     public static void createApple(){
         appleX = (random.nextInt(0, randomCoord)*Engine.dotSize);
         appleY = (random.nextInt(0, randomCoord)*Engine.dotSize);
-
-        numOfApples += 1;
     }
 
     public static void checkCollisions(){
         if(Player.x[0] == appleX && Player.y[0] == appleY){
             Player.quantitySnakeDots++;
+            numOfApples += 1;
             createApple();
         }
         for (int i = Player.quantitySnakeDots; i > 0 ; i--) {
@@ -38,6 +37,6 @@ public class Apple {
 
     public static void appleRenderer(Graphics graphics){
         graphics.setColor(Color.RED);
-        graphics.fillOval(appleX, appleY, Engine.dotSize, Engine.dotSize);
+        graphics.fillOval(appleX+1, appleY+1, Engine.dotSize-2, Engine.dotSize-2);
     }
 }
