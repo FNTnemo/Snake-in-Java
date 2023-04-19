@@ -10,11 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Engine extends JPanel implements ActionListener {
 
-    public static final int dotSize = 32;
+    JLabel label = new JLabel();
+
+    public static final int dotSize = 16;
     public static final int allDots = (WindowEngine.width / dotSize) * (WindowEngine.height / dotSize);
     public static boolean run = true;
-    public static boolean net = false;
-    public static final int gameSpeed = 230;
+
+    public static final int gameSpeed = 180;
 
     public Engine(){
         setBackground(Color.BLACK);
@@ -48,16 +50,17 @@ public class Engine extends JPanel implements ActionListener {
     }
 
     public void render(Graphics graphics){
-        if(net) {net(graphics);}
+        Debug.debugLine(graphics);
+
+        score(graphics);
+
         Player.renderPlayer(graphics);
         Apple.appleRenderer(graphics);
     }
 
-    public void net(Graphics graphics){
-        for (int i = 0; (WindowEngine.height / dotSize) > i; i++) {
-            graphics.drawLine(i*dotSize, 0, i*dotSize, WindowEngine.height);
-            graphics.drawLine(0, i*dotSize, WindowEngine.height, i*dotSize);
-        }
+    public void score(Graphics g){
+        g.setColor(Color.pink);
+        g.drawString("Score: " + Apple.numOfApples, WindowEngine.width/2 - 30, 25 + 5);
     }
 
 }

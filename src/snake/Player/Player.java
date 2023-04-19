@@ -9,7 +9,7 @@ public class Player {
     public static int[] x = new int[Engine.allDots];
     public static int[] y = new int[Engine.allDots];
 
-    public static int quantitySnakeDots = 3;
+    public static int quantitySnakeDots = 2;
 
     static boolean right = true;
     static boolean left;
@@ -17,7 +17,6 @@ public class Player {
     static boolean down;
 
     public static void renderPlayer(Graphics graphics){
-        graphics.setColor(Color.GREEN);
         for (int i = 0; i < quantitySnakeDots; i++) {
             graphics.setColor(new Color(45, 180, 0));
             if(i==0){ graphics.setColor(Color.green); }
@@ -42,8 +41,9 @@ public class Player {
     }
     public static void checkCollisions(){
         for (int i = quantitySnakeDots; i > 0 ; i--) {
-            if(i > 4 && x[0] == x[i] && y[0] == y[i]){
+            if (i > 3 && x[0] == x[i] && y[0] == y[i]) {
                 Engine.run = false;
+                break;
             }
         }
         if(x[0] > WindowEngine.width - (Engine.dotSize*2)){

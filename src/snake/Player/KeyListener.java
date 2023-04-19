@@ -1,5 +1,6 @@
 package snake.Player;
 
+import snake.Engine.Debug;
 import snake.Engine.Engine;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -33,10 +34,14 @@ public class KeyListener extends KeyAdapter {
             Engine.run = false;
         }
 
-        else if (key == KeyEvent.VK_R && !Engine.net) {
-            Engine.net = true;
-        } else if (key == KeyEvent.VK_R && Engine.net) {
-            Engine.net = false;
+        else if (key == KeyEvent.VK_R && !Debug.net) {
+            Debug.net = true;
+        } else if (key == KeyEvent.VK_R && Debug.net) {
+            Debug.net = false;
+        } else if (key == KeyEvent.VK_B && !Debug.border) {
+            Debug.border = true;
+        } else if (key == KeyEvent.VK_B && Debug.border) {
+            Debug.border = false;
         }
     }
 }

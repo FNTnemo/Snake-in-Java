@@ -1,6 +1,7 @@
 package snake.Apple;
 
 import snake.Engine.Engine;
+import snake.Engine.WindowEngine;
 import snake.Player.Player;
 
 import java.awt.*;
@@ -13,10 +14,12 @@ public class Apple {
     public static int appleX;
     public static int appleY;
 
+    public static int randomCoord = WindowEngine.size / Engine.dotSize - 1;
+
     public static int numOfApples;
     public static void createApple(){
-        appleX = (random.nextInt(0, 9)*Engine.dotSize);
-        appleY = (random.nextInt(0, 9)*Engine.dotSize);
+        appleX = (random.nextInt(0, randomCoord)*Engine.dotSize);
+        appleY = (random.nextInt(0, randomCoord)*Engine.dotSize);
 
         numOfApples += 1;
     }
@@ -25,6 +28,11 @@ public class Apple {
         if(Player.x[0] == appleX && Player.y[0] == appleY){
             Player.quantitySnakeDots++;
             createApple();
+        }
+        for (int i = Player.quantitySnakeDots; i > 0 ; i--) {
+            if(Player.x[i] == appleX && Player.y[i] == appleY){
+                createApple();
+            }
         }
     }
 
