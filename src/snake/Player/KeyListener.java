@@ -34,9 +34,9 @@ public class KeyListener extends KeyAdapter {
             Engine.restartGame();
         }
 
-        if (key == KeyEvent.VK_R && !Debug.net) {
+        if (key == KeyEvent.VK_E && !Debug.net) {
             Debug.net = true;
-        } else if (key == KeyEvent.VK_R && Debug.net) {
+        } else if (key == KeyEvent.VK_E && Debug.net) {
             Debug.net = false;
         }
 
@@ -44,6 +44,20 @@ public class KeyListener extends KeyAdapter {
             Debug.border = true;
         } else if (key == KeyEvent.VK_B && Debug.border) {
             Debug.border = false;
+        }
+
+        if(key == KeyEvent.VK_F3 && !Debug.f3){
+            Debug.net = true;
+            Debug.border = true;
+            Debug.f3 = true;
+        } else if (key == KeyEvent.VK_F3) {
+            Debug.net = false;
+            Debug.border = false;
+            Debug.f3 = false;
+        }
+
+        if(key == KeyEvent.VK_R){
+            Debug.resetMaxScore();
         }
     }
 }

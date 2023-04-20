@@ -1,5 +1,6 @@
 package snake.Apple;
 
+import snake.Engine.Config;
 import snake.Engine.Engine;
 import snake.Engine.WindowEngine;
 import snake.Player.Player;
@@ -17,6 +18,7 @@ public class Apple {
     public static int randomCoord = WindowEngine.size / Engine.dotSize - 1;
 
     public static int numOfApples;
+    public static int maxScore = Config.Right(Config.score);
     public static void createApple(){
         appleX = (random.nextInt(0, randomCoord)*Engine.dotSize);
         appleY = (random.nextInt(0, randomCoord)*Engine.dotSize);
@@ -25,7 +27,12 @@ public class Apple {
     public static void checkCollisions(){
         if(Player.x[0] == appleX && Player.y[0] == appleY){
             Player.quantitySnakeDots++;
-            numOfApples += 1;
+            numOfApples++;
+            if(numOfApples > maxScore){
+                maxScore++;
+                Config.Wright(Config.score, maxScore);
+            }
+
             createApple();
         }
         for (int i = Player.quantitySnakeDots; i > 0 ; i--) {

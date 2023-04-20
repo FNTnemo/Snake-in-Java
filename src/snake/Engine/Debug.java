@@ -1,11 +1,15 @@
 package snake.Engine;
 
+import snake.Apple.Apple;
+
 import java.awt.*;
+import java.io.File;
 
 public class Debug {
 
     public static boolean net = false;
     public static boolean border = false;
+    public static boolean f3 = false;
 
     public static void debugLine(Graphics g){
        if(net) {net(g);}
@@ -28,5 +32,12 @@ public class Debug {
         g.drawLine(0, WindowEngine.height - (Engine.dotSize), WindowEngine.width - (Engine.dotSize), WindowEngine.height - (Engine.dotSize));
         //right
         g.drawLine(WindowEngine.width - (Engine.dotSize+1), 0, WindowEngine.width - (Engine.dotSize+1), WindowEngine.height - (Engine.dotSize));
+    }
+
+    public static void resetMaxScore() {
+
+        Apple.maxScore = 0;
+        Config.Wright(Config.score, "0");
+
     }
 }

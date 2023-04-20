@@ -29,6 +29,7 @@ public class Engine extends JPanel implements ActionListener {
         Timer timer = new Timer(gameSpeed, this);
         timer.start();
         Apple.createApple();
+        Config.checkDir(Config.mainDir);
     }
 
     @Override
