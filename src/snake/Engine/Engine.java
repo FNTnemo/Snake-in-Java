@@ -1,6 +1,7 @@
 package snake.Engine;
 
 import snake.Apple.Apple;
+import snake.Apple.AppleSpawn;
 import snake.Player.KeyListener;
 import snake.Player.Player;
 import snake.Player.PlayerPhysics;
@@ -28,8 +29,9 @@ public class Engine extends JPanel implements ActionListener {
     private void init(){
         Timer timer = new Timer(gameSpeed, this);
         timer.start();
-        Apple.createApple();
+        AppleSpawn.newApple();
         Config.checkDir(Config.mainDir);
+        Debug.Log("game started");
     }
 
     @Override
@@ -42,6 +44,8 @@ public class Engine extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(run){
+            if(Player.win())
+                System.out.println("1");
             Player.move(1);
             PlayerPhysics.checkCollisions();
             Apple.checkCollisions();
@@ -52,6 +56,7 @@ public class Engine extends JPanel implements ActionListener {
     public static void restartGame(){
         Player.defaultPlayerSettings();
         run = true;
+        Debug.Log("restartGame");
     }
 
 

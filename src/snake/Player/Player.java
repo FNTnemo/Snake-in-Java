@@ -49,5 +49,11 @@ public class Player {
 
     }
 
+    public static boolean win(){
+        if(quantitySnakeDots >= (WindowEngine.width / Engine.dotSize) * (WindowEngine.height / Engine.dotSize)){
+            return true;
+        } else {return false;}
+    }
+
 }
 

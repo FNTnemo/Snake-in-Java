@@ -40,4 +40,8 @@ public class Debug {
         Config.Wright(Config.score, "0");
 
     }
+
+    public static void Log(String text){
+        System.out.println(text);
+    }
 }

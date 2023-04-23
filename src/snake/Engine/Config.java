@@ -3,7 +3,7 @@ package snake.Engine;
 import java.io.*;
 
 public class Config {
-    public static File mainDir = new File("C:/Users/" + System.getProperty("user.name")  +"/AppData/Roaming/.Snake-in-Java/");
+    public static File mainDir = new File("C:/Users/" + System.getProperty("user.name") + "/AppData/Roaming/.Snake-in-Java/");
     public static File score = new File(mainDir + "Score.txt");
     public static  File playerDefaultSettings = new File("");
 

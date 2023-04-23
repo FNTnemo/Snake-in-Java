@@ -13,7 +13,8 @@ public class EngineRender {
         maxScore(graphics);
 
         Player.renderPlayer(graphics);
-        Apple.appleRenderer(graphics);
+        Apple.appleRenderer(graphics, Apple.appleColor);
+
     }
 
     private static void score(Graphics g){
