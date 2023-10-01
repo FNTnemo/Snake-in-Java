@@ -5,6 +5,7 @@ import snake.Apple.AppleSpawn;
 import snake.Player.KeyListener;
 import snake.Player.Player;
 import snake.Player.PlayerPhysics;
+import snake.Settings.Difficulty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class Engine extends JPanel implements ActionListener {
     public static final int allDots = (WindowEngine.width / dotSize) * (WindowEngine.height / dotSize);
     public static boolean run = true;
 
-    private static final int gameSpeed = 180;
+    public static int gameSpeed = 180;
 
     public Engine(){
         setBackground(Color.BLACK);
@@ -25,13 +26,16 @@ public class Engine extends JPanel implements ActionListener {
         setFocusable(true);
         init();
     }
-
+    public static Timer timer;
     private void init(){
-        Timer timer = new Timer(gameSpeed, this);
+        timer = new Timer(gameSpeed, this);
         timer.start();
         AppleSpawn.newApple();
         Config.checkDir(Config.mainDir);
         Debug.Log("game started");
+    }
+    public static void GameTimerReload(){
+        timer.restart();
     }
 
     @Override
@@ -49,6 +53,7 @@ public class Engine extends JPanel implements ActionListener {
             Player.move(1);
             PlayerPhysics.checkCollisions();
             Apple.checkCollisions();
+            Difficulty.Difficulty();
         }
         repaint();
     }

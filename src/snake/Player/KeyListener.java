@@ -2,8 +2,11 @@ package snake.Player;
 
 import snake.Engine.Debug;
 import snake.Engine.Engine;
+import snake.Settings.Difficulty;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class KeyListener extends KeyAdapter {
     @Override
@@ -34,17 +37,6 @@ public class KeyListener extends KeyAdapter {
             Engine.restartGame();
         }
 
-        if (key == KeyEvent.VK_E && !Debug.net) {
-            Debug.net = true;
-        } else if (key == KeyEvent.VK_E && Debug.net) {
-            Debug.net = false;
-        }
-
-        if (key == KeyEvent.VK_B && !Debug.border) {
-            Debug.border = true;
-        } else if (key == KeyEvent.VK_B && Debug.border) {
-            Debug.border = false;
-        }
 
         if(key == KeyEvent.VK_F3 && !Debug.f3){
             Debug.net = true;
@@ -56,8 +48,19 @@ public class KeyListener extends KeyAdapter {
             Debug.f3 = false;
         }
 
+        //Difficulty
+        if(key == KeyEvent.VK_1 && !Engine.run){
+            Difficulty.DSpeed = !Difficulty.DSpeed;
+        }
+        else if(key == KeyEvent.VK_2 && !Engine.run){
+            Difficulty.DBorder = !Difficulty.DBorder;
+        }
+
         if(key == KeyEvent.VK_R){
             Debug.resetMaxScore();
+        }
+        if(key == KeyEvent.VK_ESCAPE){
+            Engine.run = false;
         }
     }
 }
