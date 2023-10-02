@@ -7,11 +7,23 @@ public class Config {
     public static File score = new File(mainDir + "Score.txt");
     public static  File playerDefaultSettings = new File("");
 
-    public static void Wright(File file, int num){
+    public static void Wright(File file, long num){
         try {
             checkFileExist(file);
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-            bufferedWriter.write(Integer.toString(num));
+            bufferedWriter.write(Long.toString(num));
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public static void Wright(File file, double num){
+        try {
+            checkFileExist(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            bufferedWriter.write(Double.toString(num));
             bufferedWriter.newLine();
             bufferedWriter.flush();
             bufferedWriter.close();

@@ -17,9 +17,8 @@ public class Apple {
     public static int appleX;
     public static int appleY;
 
-
-    public static int numOfApples;
-    public static int maxScore = Config.Right(Config.score);
+    public static long numOfApples;
+    public static long maxScore = Config.Right(Config.score);
 
     public static int scoreAdd;
     public static Color appleColor;
